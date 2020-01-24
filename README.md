@@ -1,4 +1,4 @@
-# wl.site
+# test-setup
 
 ## Project setup
 ```
