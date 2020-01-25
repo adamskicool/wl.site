@@ -1,22 +1,31 @@
 <template>
-	<div class="core-components-overview">
-		<div class="buttons">
-			<h1>Buttons</h1>
-			<Button :label="'Primary'" />
-			<Button :label="'Not Primary'" :primary="false" />
-			<Button :label="'Accent'" :accent="true" />
-			<Button :label="'Disabled Button'" :disabled="true" />
-		</div>
-	</div>
+    <div class="wrapper">
+        <div class="core-components-overview">
+            <div class="buttons">
+                <h1>Buttons</h1>
+                <Button :label="'Primary'" />
+                <Button :label="'Not Primary'" :primary="false" />
+                <Button :label="'Accent'" :accent="true" />
+                <Button :label="'Disabled Button'" :disabled="true" />
+            </div>
+            <div class="selectors">
+                <Select :label="'Select Item'" :items="[{label: 'label', value: 'value'}]"/>
+                <Select :label="'Disabled Selector'" :disabled="true"/>
+                <Select :label="'Select Multiple Item'" :multiple="true" :items="[{label: 'label', value: 'value'}, {label: 'label2', value: 'value2'}]"/>
+            </div>
+        </div>
+    </div>
 </template>
 
 <script lang="ts">
 import {Component, Vue, Prop} from 'vue-property-decorator';
 import Button from '@/components/core/Button.vue';
+import Select from '@/components/core/Select.vue';
 
 @Component({
 	components: {
-		Button
+        Button,
+        Select
 	}
 })
 export default class ComponentOverview extends Vue {
@@ -24,4 +33,16 @@ export default class ComponentOverview extends Vue {
 }
 </script>
 
-<style lang="scss"></style>
+<style lang="scss">
+.wrapper {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+}
+.core-components-overview {
+    width: 300px;
+
+}
+</style>

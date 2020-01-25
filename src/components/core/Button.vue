@@ -26,7 +26,6 @@ export default class Button extends Vue {
     
     handleClick(event: Event) {
         this.$emit('click', event)
-        console.log('clicked!')
     }
 }
 </script>
