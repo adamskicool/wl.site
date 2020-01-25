@@ -5,12 +5,13 @@
 			md-sort="''"
 			md-card
 			:md-fixed-header="fixedHeader"
+            @md-selected="handleOnSelect"
 		>
 			<md-table-toolbar>
 				<h1 class="md-title">{{ label }}</h1>
 			</md-table-toolbar>
 
-			<md-table-row slot="md-table-row" slot-scope="{item}">
+			<md-table-row slot="md-table-row" slot-scope="{item}" md-selectable="single">
 				<md-table-cell
 					v-for="term in Object.keys(item)"
 					:md-label="getTermLabel(term)"
@@ -39,7 +40,11 @@ export default class Table extends Vue {
 
 	getTermLabel(term: string): string {
 		return term.toUpperCase();
-	}
+    }
+    
+    handleOnSelect(event: Event){
+        this.$emit('select', event);
+    }
 }
 </script>
 

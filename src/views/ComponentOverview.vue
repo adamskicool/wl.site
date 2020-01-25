@@ -43,7 +43,7 @@ import Table from '@/components/core/Table.vue';
 })
 export default class ComponentOverview extends Vue {
     @Prop({default: ''}) label?: string;
-    
+
     users: any[] = [
         {
             id: 1,
