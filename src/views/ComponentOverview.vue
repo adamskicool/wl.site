@@ -1,6 +1,10 @@
 <template>
     <div class="wrapper">
         <div class="core-components-overview">
+            <div class="date-picker">
+                <h1>Date Picker</h1>
+                <DatePicker :label="'Pick A Date'" :immediately="true"/>
+            </div>
             <div class="buttons">
                 <h1>Buttons</h1>
                 <Button :label="'Primary'" />
@@ -9,6 +13,7 @@
                 <Button :label="'Disabled Button'" :disabled="true" />
             </div>
             <div class="selectors">
+                <h1>Selectors</h1>
                 <Select :label="'Select Item'" :items="[{label: 'label', value: 'value'}]"/>
                 <Select :label="'Disabled Selector'" :disabled="true"/>
                 <Select :label="'Select Multiple Item'" :multiple="true" :items="[{label: 'label', value: 'value'}, {label: 'label2', value: 'value2'}]"/>
@@ -21,11 +26,13 @@
 import {Component, Vue, Prop} from 'vue-property-decorator';
 import Button from '@/components/core/Button.vue';
 import Select from '@/components/core/Select.vue';
+import DatePicker from '@/components/core/DatePicker.vue';
 
 @Component({
 	components: {
         Button,
-        Select
+        Select,
+        DatePicker
 	}
 })
 export default class ComponentOverview extends Vue {
