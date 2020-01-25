@@ -15,7 +15,7 @@
 
 <script lang="ts">
 import {Component, Vue, Prop} from 'vue-property-decorator';
-import { ISelectItem } from '@/types/component-props/select-item'
+import { ISelectItem } from '@/types/interfaces/select-item'
 
 @Component
 export default class Select extends Vue {

@@ -7,7 +7,7 @@
             </div>
             <div class="tables">
                 <h1>Tables</h1>
-                <Table :label="'Custom Table'" :items="users"/>
+                <Table :label="'Custom Table'" :items="users" :selectType="ETableSelectType.none"/>
             </div>
             <div class="buttons">
                 <h1>Buttons</h1>
@@ -32,6 +32,7 @@ import Button from '@/components/core/Button.vue';
 import Select from '@/components/core/Select.vue';
 import DatePicker from '@/components/core/DatePicker.vue';
 import Table from '@/components/core/Table.vue';
+import { ETableSelectType } from '@/types/enums/table-select-type'
 
 @Component({
 	components: {
@@ -43,6 +44,8 @@ import Table from '@/components/core/Table.vue';
 })
 export default class ComponentOverview extends Vue {
     @Prop({default: ''}) label?: string;
+
+    ETableSelectType = ETableSelectType;
 
     users: any[] = [
         {
