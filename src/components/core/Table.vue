@@ -1,37 +1,35 @@
 <template>
-	<div>
-		<md-table
-			v-model="items"
-			md-sort="''"
-			md-card
-			:md-fixed-header="fixedHeader"
-            @md-selected="handleOnSelect"
-		>
-			<md-table-toolbar>
-				<h1 class="md-title">{{ label }}</h1>
-			</md-table-toolbar>
+    <md-table
+        class="table"
+        v-model="items"
+        md-card
+        :md-fixed-header="fixedHeader"
+        @md-selected="handleOnSelect"
+    >
+        <md-table-toolbar>
+            <h1 class="md-title">{{ label }}</h1>
+        </md-table-toolbar>
 
-			<md-table-row v-if="selectType === ETableSelectType.none" slot="md-table-row" slot-scope="{item}">
-				<md-table-cell
-					v-for="term in Object.keys(item)"
-					:md-label="getTermLabel(term)"
-					:md-sort-by="term"
-					:key="term"
-					>{{ item[term] }}</md-table-cell
-				>
-			</md-table-row>
+        <md-table-row v-if="selectType === ETableSelectType.none" slot="md-table-row" slot-scope="{item}">
+            <md-table-cell
+                v-for="term in Object.keys(item)"
+                :md-label="getTermLabel(term)"
+                :md-sort-by="term"
+                :key="term"
+                >{{ item[term] }}</md-table-cell
+            >
+        </md-table-row>
 
-            <md-table-row v-else slot="md-table-row" slot-scope="{item}" :md-selectable="selectType">
-				<md-table-cell
-					v-for="term in Object.keys(item)"
-					:md-label="getTermLabel(term)"
-					:md-sort-by="term"
-					:key="term"
-					>{{ item[term] }}</md-table-cell
-				>
-			</md-table-row>
-		</md-table>
-	</div>
+        <md-table-row v-else slot="md-table-row" slot-scope="{item}" :md-selectable="selectType">
+            <md-table-cell
+                v-for="term in Object.keys(item)"
+                :md-label="getTermLabel(term)"
+                :md-sort-by="term"
+                :key="term"
+                >{{ item[term] }}</md-table-cell
+            >
+        </md-table-row>
+    </md-table>
 </template>
 
 <script lang="ts">
@@ -58,9 +56,12 @@ export default class Table extends Vue {
     
     handleOnSelect(event: Event){
         this.$emit('select', event);
-        console.log(event);
     }
 }
 </script>
 
-<style lang="scss"></style>
+<style lang="scss" scoped>
+.table {
+    margin: 1rem;
+}
+</style>

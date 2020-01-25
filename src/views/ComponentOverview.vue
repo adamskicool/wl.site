@@ -7,7 +7,9 @@
             </div>
             <div class="tables">
                 <h1>Tables</h1>
-                <Table :label="'Custom Table'" :items="users" :selectType="ETableSelectType.none"/>
+                <Table :label="'Single Select'" :items="exercises" :selectType="ETableSelectType.single"/>
+                <Table :label="'Multiple Select'" :items="exercises" :selectType="ETableSelectType.multiple"/>
+                <Table :label="'No Select'" :items="exercises" :selectType="ETableSelectType.none"/>
             </div>
             <div class="buttons">
                 <h1>Buttons</h1>
@@ -47,79 +49,20 @@ export default class ComponentOverview extends Vue {
 
     ETableSelectType = ETableSelectType;
 
-    users: any[] = [
+    exercises: any[] = [
         {
             id: 1,
-            name: 'Adam',
-            email: 'adamtorkkeli@gmail.com',
-            gender: 'Male',
-            title: 'Full stack developer',
+            name: 'Bicep curl',
+            type: 'Isolation',
+            weight: 18,
+            reps: 10
         },
         {
             id: 2,
-            name: 'Sara',
-            email: 'sara@langefors.se',
-            gender: 'Female',
-            title: 'Social Science Major',
-        },{
-            id: 3,
-            name: 'Adam',
-            email: 'adamtorkkeli@gmail.com',
-            gender: 'Male',
-            title: 'Full stack developer',
-        },
-        {
-            id: 4,
-            name: 'Sara',
-            email: 'sara@langefors.se',
-            gender: 'Female',
-            title: 'Social Science Major',
-        },
-        {
-            id: 5,
-            name: 'Sara',
-            email: 'sara@langefors.se',
-            gender: 'Female',
-            title: 'Social Science Major',
-        },{
-            id: 6,
-            name: 'Adam',
-            email: 'adamtorkkeli@gmail.com',
-            gender: 'Male',
-            title: 'Full stack developer',
-        },
-        {
-            id: 7,
-            name: 'Sara',
-            email: 'sara@langefors.se',
-            gender: 'Female',
-            title: 'Social Science Major',
-        },{
-            id: 8,
-            name: 'Adam',
-            email: 'adamtorkkeli@gmail.com',
-            gender: 'Male',
-            title: 'Full stack developer',
-        },
-        {
-            id: 9,
-            name: 'Sara',
-            email: 'sara@langefors.se',
-            gender: 'Female',
-            title: 'Social Science Major',
-        },{
-            id: 10,
-            name: 'Adam',
-            email: 'adamtorkkeli@gmail.com',
-            gender: 'Male',
-            title: 'Full stack developer',
-        },
-        {
-            id: 11,
-            name: 'Sara',
-            email: 'sara@langefors.se',
-            gender: 'Female',
-            title: 'Social Science Major',
+            name: 'Bicep curl',
+            type: 'Isolation',
+            weight: 20,
+            reps: 8
         }
     ]
 }
