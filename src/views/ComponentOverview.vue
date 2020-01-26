@@ -24,6 +24,10 @@
                 <Select :label="'Disabled Selector'" :disabled="true"/>
                 <Select :label="'Select Multiple Item'" :multiple="true" :items="[{label: 'label', value: 'value'}, {label: 'label2', value: 'value2'}]"/>
             </div>
+            <div class="charts">
+                <h1>Google Charts</h1>
+                <GoogleChart :label="'Bicep Curl Progression'" :input="chart_input"/>
+            </div>
         </div>
     </div>
 </template>
@@ -34,14 +38,18 @@ import Button from '@/components/core/Button.vue';
 import Select from '@/components/core/Select.vue';
 import DatePicker from '@/components/core/DatePicker.vue';
 import Table from '@/components/core/Table.vue';
-import { ETableSelectType } from '@/types/enums/table-select-type'
+import GoogleChart from '@/components/google-chart/GoogleChart.vue';
+import { ETableSelectType } from '@/types/enums/table-select-type';
+import { IGoogleChartInput } from '@/types/interfaces/google-chart-input';
+import { EGoogleChartType } from '@/types/enums/google-chart-type';
 
 @Component({
 	components: {
         Button,
         Select,
         DatePicker,
-        Table
+        Table,
+        GoogleChart
     },
 })
 export default class ComponentOverview extends Vue {
@@ -55,16 +63,28 @@ export default class ComponentOverview extends Vue {
             name: 'Bicep curl',
             type: 'Isolation',
             weight: 18,
-            reps: 10
+            reps: 10,
+            mother: 'Thereze Torkkeli'
         },
         {
-            id: 2,
+            id: 3,
             name: 'Bicep curl',
             type: 'Isolation',
             weight: 20,
-            reps: 8
+            reps: 8,
+            mother: 'Dick Torkkeli'
         }
-    ]
+    ];
+
+    chart_input: IGoogleChartInput = {
+        type: EGoogleChartType.line,
+        labels: ['Date', 'Max Weight', 'Reps'],
+        data: [
+            ['2019-01-12', 12, 10],
+            ['2019-01-13', 14, 8],
+            ['2019-01-14', 16, 6]
+        ]
+    }
 }
 </script>
 
