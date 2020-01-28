@@ -1,5 +1,5 @@
 export interface ISelectItem {
-	id: number;
-	label: string;
-	value: any;
+  id: number;
+  label: string;
+  value: any;
 }
