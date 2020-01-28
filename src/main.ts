@@ -2,10 +2,13 @@ import Vue from 'vue';
 import App from './App.vue';
 import router from './router';
 import store from './store';
-import Buefy from 'buefy';
-import 'buefy/dist/buefy.css';
+import VueMaterial from 'vue-material';
+import 'vue-material/dist/vue-material.min.css';
+import 'vue-material/dist/theme/default.css';
+import VueGoogleCharts from 'vue-google-charts';
 
-Vue.use(Buefy);
+Vue.use(VueMaterial);
+Vue.use(VueGoogleCharts);
 
 Vue.config.productionTip = false;
 
