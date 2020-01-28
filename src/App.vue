@@ -8,9 +8,7 @@
 import { Component, Vue, Prop } from "vue-property-decorator";
 
 @Component
-export default class App extends Vue {
-    
-}
+export default class App extends Vue {}
 </script>
 
 <style lang="scss">
@@ -20,6 +18,6 @@ export default class App extends Vue {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  height: 100vh;
 }
 </style>
