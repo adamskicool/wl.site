@@ -1,6 +1,6 @@
 <template>
-  <md-card class="login-form">
-    <h2>Log in</h2>
+  <md-card class="signup-form">
+    <h2>Sign up</h2>
     <TextInput
       :label="'Username'"
       :helperText="'Enter username'"
@@ -12,13 +12,19 @@
       :type="EInputType.password"
       @change="handlePasswordChange"
     />
+    <TextInput
+      :label="'Repeat password'"
+      :helperText="'Enter password again'"
+      :type="EInputType.password"
+      @change="handlePasswordAgainChange"
+    />
     <Select
       :label="'Account type'"
       :items="loginTypes"
       @selected="handleSelected"
     />
-    <div class="login-button">
-      <Button :label="'Log in'" @click="handleClick" />
+    <div class="signup-button">
+      <Button :label="'Sign up'" @click="handleClick" />
     </div>
   </md-card>
 </template>
@@ -29,7 +35,7 @@ import Button from "@/components/core/Button.vue";
 import TextInput from "@/components/core/TextInput.vue";
 import Select from "@/components/core/Select.vue";
 import { EInputType } from "@/types/enums/input-type";
-import { ILoginDetails } from "@/login-view/types/interfaces/login-details";
+import { ISignupDetails } from "@/login-view/types/interfaces/signup-details";
 import { ISelectItem } from "@/types/interfaces/select-item";
 import { EAccountType } from "@/login-view/types/enums/account-type";
 
@@ -40,13 +46,14 @@ import { EAccountType } from "@/login-view/types/enums/account-type";
     Select
   }
 })
-export default class LoginForm extends Vue {
+export default class SignupForm extends Vue {
   @Prop() loginTypes: ISelectItem[];
 
   EInputType = EInputType;
 
   valueUsername: string = "";
   valuePassword: string = "";
+  valuePasswordAgain: string = "";
   valueAccountType: EAccountType = EAccountType.none;
 
   handleUsernameChange(username: string) {
@@ -57,23 +64,28 @@ export default class LoginForm extends Vue {
     this.valuePassword = password;
   }
 
+  handlePasswordAgainChange(password: string) {
+    this.valuePasswordAgain = password;
+  }
+
   handleSelected(loginType: EAccountType) {
     this.valueAccountType = loginType;
   }
 
   handleClick() {
-    const loginDetails: ILoginDetails = {
+    const signupDetails: ISignupDetails = {
       username: this.valueUsername,
       password: this.valuePassword,
-      loginType: this.valuEAccountType
+      passwordAgain: this.valuePasswordAgain,
+      loginType: this.valueAccountType
     };
-    this.$emit("login", loginDetails);
+    this.$emit("signup", signupDetails);
   }
 }
 </script>
 
 <style lang="scss" scoped>
-.login-button {
+.signup-button {
   display: flex;
   justify-content: flex-end;
 }
