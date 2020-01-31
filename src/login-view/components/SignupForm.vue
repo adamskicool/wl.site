@@ -20,7 +20,7 @@
     />
     <Select
       :label="'Account type'"
-      :items="loginTypes"
+      :items="accountTypes"
       @selected="handleSelected"
     />
     <div class="signup-button">
@@ -47,7 +47,7 @@ import { EAccountType } from "@/login-view/types/enums/account-type";
   }
 })
 export default class SignupForm extends Vue {
-  @Prop() loginTypes: ISelectItem[];
+  @Prop() accountTypes!: ISelectItem[];
 
   EInputType = EInputType;
 

@@ -1,7 +1,7 @@
 <template>
   <div class="login-view">
-    <LoginForm @login="handleLogin" :login-types="loginTypes" />
-    <SignupForm @signup="handleSignup" :login-types="loginTypes" />
+    <LoginForm @login="handleLogin" :account-types="accountTypes" />
+    <SignupForm @signup="handleSignup" :account-types="accountTypes" />
   </div>
 </template>
 
@@ -10,7 +10,9 @@ import { Component, Vue, Prop } from "vue-property-decorator";
 import LoginForm from "@/login-view/components/LoginForm.vue";
 import SignupForm from "@/login-view/components/SignupForm.vue";
 import { ILoginDetails } from "@/login-view/types/interfaces/login-details.ts";
+import { ISignupDetails } from "@/login-view/types/interfaces/signup-details.ts";
 import { EAccountType } from "@/login-view/types/enums/account-type";
+import { ISelectItem } from "@/types/interfaces/select-item";
 
 @Component({
   components: {
@@ -19,7 +21,7 @@ import { EAccountType } from "@/login-view/types/enums/account-type";
   }
 })
 export default class LoginView extends Vue {
-  loginTypes: ISelectItem[] = [
+  accountTypes: ISelectItem[] = [
     {
       id: 1,
       label: "Administrator",
@@ -33,6 +35,10 @@ export default class LoginView extends Vue {
   ];
 
   handleLogin(loginDetails: ILoginDetails) {
+    //TODO: use some store (maybe user store) to login (and recieve JWT)
+  }
+
+  handleSignup(signupDetails: ISignupDetails) {
     //TODO: use some store (maybe user store) to login (and recieve JWT)
   }
 }
