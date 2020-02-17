@@ -4,5 +4,5 @@ export interface ISignupDetails {
   username: string;
   password: string;
   passwordAgain: string;
-  loginType: EAccountType;
+  accountType: EAccountType;
 }

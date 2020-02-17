@@ -6,6 +6,13 @@
 </template>
 
 <script lang="ts">
+import { State, Action, Getter } from "vuex-class";
+import {
+  actionLogin,
+  actionSignup
+} from "@/store/modules/session/session.actions";
+import { namespace as sessionNamespace } from "@/store/modules/session/session.store";
+
 import { Component, Vue, Prop } from "vue-property-decorator";
 import LoginForm from "@/login-view/components/LoginForm.vue";
 import SignupForm from "@/login-view/components/SignupForm.vue";
@@ -21,6 +28,9 @@ import { ISelectItem } from "@/types/interfaces/select-item";
   }
 })
 export default class LoginView extends Vue {
+  @Action(actionSignup, { namespace: sessionNamespace }) actionSignup: any;
+  @Action(actionLogin, { namespace: sessionNamespace }) actionLogin: any;
+
   accountTypes: ISelectItem[] = [
     {
       id: 1,
@@ -35,11 +45,11 @@ export default class LoginView extends Vue {
   ];
 
   handleLogin(loginDetails: ILoginDetails) {
-    //TODO: use some store (maybe user store) to login (and recieve JWT)
+    this.actionLogin({ payload: loginDetails });
   }
 
   handleSignup(signupDetails: ISignupDetails) {
-    //TODO: use some store (maybe user store) to signup (and recieve JWT)
+    this.actionSignup({ payload: signupDetails });
   }
 }
 </script>

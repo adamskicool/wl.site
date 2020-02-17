@@ -68,8 +68,8 @@ export default class SignupForm extends Vue {
     this.valuePasswordAgain = password;
   }
 
-  handleSelected(loginType: EAccountType) {
-    this.valueAccountType = loginType;
+  handleSelected(accountType: EAccountType) {
+    this.valueAccountType = accountType;
   }
 
   handleClick() {
@@ -77,7 +77,7 @@ export default class SignupForm extends Vue {
       username: this.valueUsername,
       password: this.valuePassword,
       passwordAgain: this.valuePasswordAgain,
-      loginType: this.valueAccountType
+      accountType: this.valueAccountType
     };
     this.$emit("signup", signupDetails);
   }
