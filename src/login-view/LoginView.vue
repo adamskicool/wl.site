@@ -45,11 +45,11 @@ export default class LoginView extends Vue {
   ];
 
   handleLogin(loginDetails: ILoginDetails) {
-    this.actionLogin({ payload: loginDetails });
+    this.actionLogin(loginDetails);
   }
 
   handleSignup(signupDetails: ISignupDetails) {
-    this.actionSignup({ payload: signupDetails });
+    this.actionSignup(signupDetails);
   }
 }
 </script>
