@@ -39,7 +39,7 @@ export default class LoginView extends Vue {
   }
 
   handleSignup(signupDetails: ISignupDetails) {
-    //TODO: use some store (maybe user store) to login (and recieve JWT)
+    //TODO: use some store (maybe user store) to signup (and recieve JWT)
   }
 }
 </script>
