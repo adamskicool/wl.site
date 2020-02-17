@@ -1,5 +1,6 @@
 import { Module } from "vuex";
 import { IRootState } from "../../index";
+import { actions } from "./session.actions";
 
 export const namespace = "session";
 
@@ -16,7 +17,7 @@ const namespaced: boolean = true;
 export const session: Module<ISessionState, IRootState> = {
   state,
   namespaced,
-  actions: {},
+  actions,
   mutations: {},
   getters: {}
 };
