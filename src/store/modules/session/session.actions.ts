@@ -5,23 +5,37 @@ import {ISignupDetails} from '@/login-view/types/interfaces/signup-details';
 import {ILoginDetails} from '@/login-view/types/interfaces/login-details';
 import {SessionService} from './session.service';
 
-export const actionSignup = 'signup';
-export const actionLogin = 'login';
+import {mutationSetToken} from './session.mutations';
+
+export const actionSignup: string = 'signup';
+export const actionSignupSuccess: string = 'signupSuccess';
+export const actionSignupFailed: string = 'signupFailed';
+
+export const actionLogin: string = 'login';
+export const actionLoginSuccess: string = 'loginSuccess';
+export const actionLoginFailed: string = 'loginFailed';
 
 export const actions: ActionTree<ISessionState, IRootState> = {
 	async [actionSignup]({dispatch, commit, state}, payload: ISignupDetails) {
 		try {
 			const res = await new SessionService().signUp(payload);
 		} catch (e) {
-			//TODO
+			dispatch(actionSignupFailed);
 		}
 	},
-
+	async [actionSignupSuccess]({dispatch, commit, state}) {},
+	async [actionSignupFailed]({dispatch, commit, state}) {},
 	async [actionLogin]({dispatch, commit, state}, payload: ILoginDetails) {
 		try {
 			const res = await new SessionService().login(payload);
+			console.log(res);
+			dispatch(actionLoginSuccess, res.data.token);
 		} catch (e) {
-			//TODO
+			dispatch(actionLoginFailed);
 		}
-	}
+	},
+	async [actionLoginSuccess]({dispatch, commit, state}, token: string) {
+		commit(mutationSetToken, token);
+	},
+	async [actionLoginFailed]({dispatch, commit, state}) {}
 };
