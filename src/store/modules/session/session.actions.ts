@@ -24,7 +24,9 @@ export const actions: ActionTree<ISessionState, IRootState> = {
 		}
 	},
 	async [actionSignupSuccess]({dispatch, commit, state}) {},
-	async [actionSignupFailed]({dispatch, commit, state}) {},
+	async [actionSignupFailed]({dispatch, commit, state}) {
+		dispatch('alert/showMessage', 'Could not sign up!', {root: true});
+	},
 	async [actionLogin]({dispatch, commit, state}, payload: ILoginDetails) {
 		try {
 			const res = await new SessionService().login(payload);
@@ -37,5 +39,7 @@ export const actions: ActionTree<ISessionState, IRootState> = {
 	async [actionLoginSuccess]({dispatch, commit, state}, token: string) {
 		commit(mutationSetToken, token);
 	},
-	async [actionLoginFailed]({dispatch, commit, state}) {}
+	async [actionLoginFailed]({dispatch, commit, state}) {
+		dispatch('alert/showMessage', 'Could not log in!', {root: true});
+	}
 };
