@@ -13,15 +13,11 @@ export class SessionService {
 			headers: {
 				'Content-Type': 'application/json'
 			},
-			data: JSON.stringify({
-				username: payload.username,
-				password: payload.password
-			})
+			data: JSON.stringify(payload)
 		});
 	}
 
 	async signUp(payload: ISignupDetails) {
-		console.log(payload);
 		return axios({
 			method: 'POST',
 			url: 'http://localhost:5000/api/user/signup',

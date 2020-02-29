@@ -65,7 +65,7 @@ export default class LoginForm extends Vue {
     const loginDetails: ILoginDetails = {
       username: this.valueUsername,
       password: this.valuePassword,
-      loginType: this.valueAccountType
+      accountType: this.valueAccountType
     };
     this.$emit("login", loginDetails);
   }
