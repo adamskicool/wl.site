@@ -1,22 +1,55 @@
 <template>
   <div class="login-view">
-    <LoginForm @login="handleLogin" />
+    <LoginForm @login="handleLogin" :account-types="accountTypes" />
+    <SignupForm @signup="handleSignup" :account-types="accountTypes" />
   </div>
 </template>
 
 <script lang="ts">
+import { State, Action, Getter } from "vuex-class";
+import {
+  actionLogin,
+  actionSignup
+} from "@/store/modules/session/session.actions";
+import { namespace as sessionNamespace } from "@/store/modules/session/session.store";
+
 import { Component, Vue, Prop } from "vue-property-decorator";
 import LoginForm from "@/login-view/components/LoginForm.vue";
-import { ILoginDetails } from "@/types/interfaces/login-details.ts";
+import SignupForm from "@/login-view/components/SignupForm.vue";
+import { ILoginDetails } from "@/login-view/types/interfaces/login-details.ts";
+import { ISignupDetails } from "@/login-view/types/interfaces/signup-details.ts";
+import { EAccountType } from "@/login-view/types/enums/account-type";
+import { ISelectItem } from "@/types/interfaces/select-item";
 
 @Component({
   components: {
-    LoginForm
+    LoginForm,
+    SignupForm
   }
 })
 export default class LoginView extends Vue {
+  @Action(actionSignup, { namespace: sessionNamespace }) actionSignup: any;
+  @Action(actionLogin, { namespace: sessionNamespace }) actionLogin: any;
+
+  accountTypes: ISelectItem[] = [
+    {
+      id: 1,
+      label: "Administrator",
+      value: EAccountType.admin
+    },
+    {
+      id: 2,
+      label: "User",
+      value: EAccountType.user
+    }
+  ];
+
   handleLogin(loginDetails: ILoginDetails) {
-    //TODO: use some store (maybe user store) to login (and recieve JWT)
+    this.actionLogin(loginDetails);
+  }
+
+  handleSignup(signupDetails: ISignupDetails) {
+    this.actionSignup(signupDetails);
   }
 }
 </script>
@@ -28,5 +61,13 @@ export default class LoginView extends Vue {
   align-items: center;
   height: 100%;
   width: 100%;
+}
+.login-form,
+.signup-form {
+  width: 33%;
+  max-width: 300px;
+  height: auto;
+  padding: 1rem;
+  margin: 2rem;
 }
 </style>

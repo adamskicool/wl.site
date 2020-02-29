@@ -1,14 +1,21 @@
 <template>
   <div id="app">
     <router-view></router-view>
+    <Alert />
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue, Prop } from "vue-property-decorator";
+import Alert from '@/components/alert/Alert.vue';
 
-@Component
-export default class App extends Vue {}
+@Component({
+    components:{
+        Alert,
+    }
+})
+export default class App extends Vue {
+}
 </script>
 
 <style lang="scss">
