@@ -7,6 +7,11 @@
       @change="handleUsernameChange"
     />
     <TextInput
+      :label="'Email'"
+      :helperText="'Enter email'"
+      @change="handleEmailChange"
+    />
+    <TextInput
       :label="'Password'"
       :helperText="'Enter password'"
       :type="EInputType.password"
@@ -16,7 +21,7 @@
       :label="'Repeat password'"
       :helperText="'Enter password again'"
       :type="EInputType.password"
-      @change="handlePasswordAgainChange"
+      @change="handleVerifyPasswordChange"
     />
     <Select
       :label="'Account type'"
@@ -52,20 +57,25 @@ export default class SignupForm extends Vue {
   EInputType = EInputType;
 
   valueUsername: string = "";
+  valueEmail: string = "";
   valuePassword: string = "";
-  valuePasswordAgain: string = "";
+  valueVerifyPassword: string = "";
   valueAccountType: EAccountType = EAccountType.none;
 
   handleUsernameChange(username: string) {
     this.valueUsername = username;
   }
 
+  handleEmailChange(email: string) {
+      this.valueEmail = email;
+  }
+
   handlePasswordChange(password: string) {
     this.valuePassword = password;
   }
 
-  handlePasswordAgainChange(password: string) {
-    this.valuePasswordAgain = password;
+  handleVerifyPasswordChange(password: string) {
+    this.valueVerifyPassword = password;
   }
 
   handleSelected(accountType: EAccountType) {
@@ -75,8 +85,9 @@ export default class SignupForm extends Vue {
   handleClick() {
     const signupDetails: ISignupDetails = {
       username: this.valueUsername,
+      email: this.valueEmail,
       password: this.valuePassword,
-      passwordAgain: this.valuePasswordAgain,
+      verifyPassword: this.valueVerifyPassword,
       accountType: this.valueAccountType
     };
     this.$emit("signup", signupDetails);
