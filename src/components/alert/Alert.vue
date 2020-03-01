@@ -1,5 +1,5 @@
 <template>
-    <md-snackbar :md-position="position" :md-duration="isInfinity ? Infinity : duration" :md-active.sync="showSnackbar">
+    <md-snackbar :md-position="position" :md-duration="duration" :md-active="show">
         <span>{{message}}</span>
     </md-snackbar>
 </template>
@@ -14,18 +14,9 @@ import {namespace as alertNamespace} from '@/store/modules/alert/alert.store';
 export default class Alert extends Vue {
     @State('message', {namespace: alertNamespace}) message!: string;
     @State('duration', {namespace: alertNamespace}) duration!: number;
-    
-    @Watch('message')
-    status(oldValue, newValue) {
-        if(!newValue) {
-            this.showSnackbar = false;
-        }
-        this.showSnackbar = true;
-    }
+    @State('show', {namespace: alertNamespace}) show!: boolean;
 
     position: string = 'center';
-    showSnackbar: boolean = false;
-    isInfinity: boolean = false;
 }
 </script>
 
