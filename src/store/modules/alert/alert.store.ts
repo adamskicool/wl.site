@@ -3,16 +3,20 @@ import {IRootState} from '../../index';
 import {actions} from './alert.actions';
 import {mutations} from './alert.mutations';
 
-export const namespace = 'alert';
+export const namespace: string = 'alert';
 
 export interface IAlertState {
 	message: string;
 	duration: number;
+	show: boolean;
+	activeTimeout: any;
 }
 
 export const state: IAlertState = {
 	message: '',
-	duration: 4000
+	duration: 4000,
+	show: false,
+	activeTimeout: null
 };
 
 const namespaced: boolean = true;
