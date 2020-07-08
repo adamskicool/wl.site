@@ -1,5 +1,5 @@
 export enum ETableSelectType {
-	single = 'single',
-	multiple = 'multiple',
-	none = ''
+  single = "single",
+  multiple = "multiple",
+  none = ""
 }

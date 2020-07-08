@@ -2,8 +2,8 @@ import router from "@/router";
 import { ActionTree } from "vuex";
 import { ISessionState } from "./session.store";
 import { IRootState } from "../../index";
-import { ISignupDetails } from "@/login-view/types/interfaces/signup-details";
-import { ILoginDetails } from "@/login-view/types/interfaces/login-details";
+import { ISignupDetails } from "@/view-login/types/interfaces/signup-details";
+import { ILoginDetails } from "@/view-login/types/interfaces/login-details";
 import { SessionService } from "./session.service";
 
 import { IResponseLogin } from "@/store/types/response-login";

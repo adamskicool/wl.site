@@ -1,5 +1,5 @@
-import { ILoginDetails } from "@/login-view/types/interfaces/login-details";
-import { ISignupDetails } from "@/login-view/types/interfaces/signup-details";
+import { ILoginDetails } from "@/view-login/types/interfaces/login-details";
+import { ISignupDetails } from "@/view-login/types/interfaces/signup-details";
 import { IResponseLogin } from "@/store/types/response-login";
 import { IResponseSignup } from "@/store/types/response-signup";
 
