@@ -14,11 +14,11 @@ import {
 import { namespace as sessionNamespace } from "@/store/modules/session/session.store";
 
 import { Component, Vue, Prop } from "vue-property-decorator";
-import LoginForm from "@/login-view/components/LoginForm.vue";
-import SignupForm from "@/login-view/components/SignupForm.vue";
-import { ILoginDetails } from "@/login-view/types/interfaces/login-details.ts";
-import { ISignupDetails } from "@/login-view/types/interfaces/signup-details.ts";
-import { EAccountType } from "@/login-view/types/enums/account-type";
+import LoginForm from "@/view-login/components/LoginForm.vue";
+import SignupForm from "@/view-login/components/SignupForm.vue";
+import { ILoginDetails } from "@/view-login/types/interfaces/login-details";
+import { ISignupDetails } from "@/view-login/types/interfaces/signup-details";
+import { EAccountType } from "@/view-login/types/enums/account-type";
 import { ISelectItem } from "@/types/interfaces/select-item";
 
 @Component({
@@ -28,8 +28,14 @@ import { ISelectItem } from "@/types/interfaces/select-item";
   }
 })
 export default class LoginView extends Vue {
-  @Action(actionSignup, { namespace: sessionNamespace }) actionSignup: any;
-  @Action(actionLogin, { namespace: sessionNamespace }) actionLogin: any;
+  @Action(actionSignup, {
+    namespace: sessionNamespace
+  })
+  actionSignup: any;
+  @Action(actionLogin, {
+    namespace: sessionNamespace
+  })
+  actionLogin: any;
 
   accountTypes: ISelectItem[] = [
     {

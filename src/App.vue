@@ -1,21 +1,22 @@
 <template>
   <div id="app">
-    <router-view></router-view>
+    <vue-page-transition name="fade-in-up" class="router-wrapper">
+      <router-view />
+    </vue-page-transition>
     <Alert />
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue, Prop } from "vue-property-decorator";
-import Alert from '@/components/alert/Alert.vue';
+import Alert from "@/components/alert/Alert.vue";
 
 @Component({
-    components:{
-        Alert,
-    }
+  components: {
+    Alert
+  }
 })
-export default class App extends Vue {
-}
+export default class App extends Vue {}
 </script>
 
 <style lang="scss">
@@ -26,5 +27,9 @@ export default class App extends Vue {
   text-align: center;
   color: #2c3e50;
   height: 100vh;
+
+  .router-wrapper {
+    height: 100%;
+  }
 }
 </style>

@@ -29,9 +29,9 @@ import Button from "@/components/core/Button.vue";
 import TextInput from "@/components/core/TextInput.vue";
 import Select from "@/components/core/Select.vue";
 import { EInputType } from "@/types/enums/input-type";
-import { ILoginDetails } from "@/login-view/types/interfaces/login-details";
+import { ILoginDetails } from "@/view-login/types/interfaces/login-details";
 import { ISelectItem } from "@/types/interfaces/select-item";
-import { EAccountType } from "@/login-view/types/enums/account-type";
+import { EAccountType } from "@/view-login/types/enums/account-type";
 
 @Component({
   components: {

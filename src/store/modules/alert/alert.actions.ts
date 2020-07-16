@@ -6,7 +6,7 @@ import {
 	mutationSetActiveTimeout,
 	mutationSetMessage,
 	mutationClearMessage,
-	mutationSetShow
+	mutationSetShow,
 } from './alert.mutations';
 
 export const actionShowMessage: string = 'showMessage';
@@ -36,5 +36,5 @@ export const actions: ActionTree<IAlertState, IRootState> = {
 			commit(mutationClearMessage);
 			commit(mutationSetShow, false);
 		}, state.duration);
-	}
+	},
 };

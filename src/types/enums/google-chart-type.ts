@@ -1,3 +1,3 @@
 export enum EGoogleChartType {
-	line = 'LineChart'
+  line = "LineChart"
 }

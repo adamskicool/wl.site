@@ -18,5 +18,5 @@ export const mutations: MutationTree<IAlertState> = {
 	},
 	[mutationSetActiveTimeout](state, activeTimeout: any) {
 		state.activeTimeout = activeTimeout;
-	}
+	},
 };

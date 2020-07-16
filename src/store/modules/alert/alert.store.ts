@@ -16,7 +16,7 @@ export const state: IAlertState = {
 	message: '',
 	duration: 4000,
 	show: false,
-	activeTimeout: null
+	activeTimeout: null,
 };
 
 const namespaced: boolean = true;
@@ -26,5 +26,5 @@ export const alert: Module<IAlertState, IRootState> = {
 	namespaced,
 	actions,
 	mutations,
-	getters: {}
+	getters: {},
 };
