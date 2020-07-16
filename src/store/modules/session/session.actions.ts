@@ -38,7 +38,7 @@ export const actions: ActionTree<ISessionState, IRootState> = {
       `Successfully created user: ${payload.data.username}`,
       { root: true }
     );
-    // TODO: router.push("/homepage");
+    router.push("/home");
   },
   async [actionSignupFailed]({ dispatch, commit, state }) {
     dispatch("alert/showMessage", "Could not sign up!", { root: true });
@@ -61,7 +61,7 @@ export const actions: ActionTree<ISessionState, IRootState> = {
       `Successfully logged in with user: ${payload.data.username}`,
       { root: true }
     );
-    // TODO: router.push("/homepage");
+    router.push("/home");
   },
   async [actionLoginFailed]({ dispatch, commit, state }) {
     dispatch("alert/showMessage", "Could not log in!", { root: true });
