@@ -1,6 +1,9 @@
 <template>
-  <div class="home-view">
+  <div class="application-view">
     <TopBar />
+    <vue-page-transition name="fade-in-up" class="app-router-wrapper">
+        <router-view></router-view>
+    </vue-page-transition>
   </div>
 </template>
 
@@ -18,10 +21,15 @@ export default class HomeView extends Vue {}
 </script>
 
 <style lang="scss">
-.home-view {
+.application-view {
   height: 100vh;
   width: 100vw;
   margin: 0px;
   padding: 0px;
+
+  .app-router-wrapper {
+    height: calc(100vh - #{$top-bar-height});
+    overflow-y: scroll;
+  }
 }
 </style>

@@ -1,12 +1,12 @@
-import { IRouterNav } from "@/types/interfaces/router-nav";
+import {IRouterNav} from '@/types/interfaces/router-nav';
 
 export const topBarOptions: IRouterNav[] = [
-  {
-    name: "home",
-    path: "/home"
-  },
-  {
-    name: "new-workout",
-    path: "/new-workout"
-  }
+	{
+		name: 'home',
+		path: 'home',
+	},
+	{
+		name: 'new-workout',
+		path: 'new_workout',
+	},
 ];
