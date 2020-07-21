@@ -27,4 +27,16 @@ export class SessionService {
 			data: JSON.stringify(payload),
 		});
 	}
+
+	addTokenToLocalStorage(token: string): void {
+		localStorage.setItem('token', token);
+	}
+
+	getTokenFromLocalStorage(): string {
+		return localStorage.getItem('token') || '';
+	}
+
+	removeTokenFromLocalStorage(): void {
+		localStorage.removeItem('token');
+	}
 }

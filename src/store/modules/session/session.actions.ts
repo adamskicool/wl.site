@@ -28,16 +28,14 @@ export const actions: ActionTree<ISessionState, IRootState> = {
 			dispatch(actionSignupFailed);
 		}
 	},
-	async [actionSignupSuccess](
-		{dispatch, commit, state},
-		payload: IResponseSignup
-	) {
+	async [actionSignupSuccess]({dispatch, commit}, payload: IResponseSignup) {
 		commit(mutationSetToken, payload.data.token);
 		dispatch(
 			'alert/showMessage',
 			`Successfully created user: ${payload.data.username}`,
 			{root: true}
 		);
+		new SessionService().addTokenToLocalStorage(payload.data.token);
 		router.push('/app');
 	},
 	async [actionSignupFailed]({dispatch, commit, state}) {
@@ -51,16 +49,14 @@ export const actions: ActionTree<ISessionState, IRootState> = {
 			dispatch(actionLoginFailed);
 		}
 	},
-	async [actionLoginSuccess](
-		{dispatch, commit, state},
-		payload: IResponseLogin
-	) {
+	async [actionLoginSuccess]({dispatch, commit}, payload: IResponseLogin) {
 		commit(mutationSetToken, payload.data.token);
 		dispatch(
 			'alert/showMessage',
 			`Successfully logged in with user: ${payload.data.username}`,
 			{root: true}
 		);
+		new SessionService().addTokenToLocalStorage(payload.data.token);
 		router.push('/app');
 	},
 	async [actionLoginFailed]({dispatch, commit, state}) {

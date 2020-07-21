@@ -1,14 +1,18 @@
 <template>
   <div class="new-workout-view">
     <transition-group class="presets" name="move">
-        <WorkoutPreset v-for="preset in presets" v-bind:key="preset" :name="'Arm blaster'" :description="'This is an awesome workout. This is an awesome workout. This is an awesome workout. This is an awesome workout. This is an awesome workout. This is an awesome workout. This is an awesome workout.'" :muscle-areas="['bicep', 'tricep', 'pectoral major']"/>
+        <!-- TODO: Swapp out muscle areas for calculated propery from BE... -->
+        <WorkoutPreset v-for="preset in workoutPresets" v-bind:key="preset.id" :name="preset.name" :description="preset.description" :muscle-areas="['bicep', 'tricep', 'pectoral major']"/>
     </transition-group>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue, Prop } from "vue-property-decorator";
+import { State, Action, Getter } from "vuex-class";
+import { namespace as libraryNamespace } from "@/store/modules/library/library.store";
 import WorkoutPreset from "@/components/workout-preset/WorkoutPreset.vue";
+import {IWorkoutPresetDTO} from '@/store/entities/dto/workout-preset-dto';
 
 @Component({
     components: {
@@ -16,9 +20,7 @@ import WorkoutPreset from "@/components/workout-preset/WorkoutPreset.vue";
     }
 })
 export default class NewWorkoutView extends Vue {
-    get presets(): number[] {
-        return [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-    }
+    @State("workoutPresets", { namespace: libraryNamespace }) workoutPresets!: IWorkoutPresetDTO[];
 }
 </script>
 

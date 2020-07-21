@@ -1,5 +1,7 @@
 import Vue from 'vue';
-import VueRouter from 'vue-router';
+import VueRouter, {Route} from 'vue-router';
+import {SessionService} from '@/store/modules/session/session.service';
+import {state} from '@/store/modules/session/session.store';
 
 Vue.use(VueRouter);
 
@@ -34,6 +36,19 @@ const routes = [
 
 const router = new VueRouter({
 	routes,
+});
+
+//TODO: Check with api if token is valid, if not... remove it before navigating to login view.
+router.beforeEach((to: Route, from: Route, next: Function) => {
+	const service: SessionService = new SessionService();
+	const token: string = service.getTokenFromLocalStorage();
+	if (token) {
+		//set token in session store module
+		state.token = token;
+	} else if (!to.path.includes('login')) {
+		router.push('/login');
+	}
+	next();
 });
 
 export default router;
