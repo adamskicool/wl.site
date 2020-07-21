@@ -8,6 +8,11 @@
 </template>
 
 <script lang="ts">
+import {
+  actionLoadWorkoutPresets,
+} from "@/store/modules/library/library.actions";
+import { namespace as libraryNamespace } from "@/store/modules/library/library.store";
+
 import { State, Action, Getter } from "vuex-class";
 import { Component, Vue, Prop } from "vue-property-decorator";
 import TopBar from "@/components/topbar/TopBar.vue";
@@ -17,7 +22,16 @@ import TopBar from "@/components/topbar/TopBar.vue";
     TopBar
   }
 })
-export default class HomeView extends Vue {}
+export default class HomeView extends Vue {
+    @Action(actionLoadWorkoutPresets, {
+    namespace: libraryNamespace
+  })
+  actionLoadWorkoutPresets: any;
+
+  async created() {
+      this.actionLoadWorkoutPresets();
+  }
+}
 </script>
 
 <style lang="scss">
