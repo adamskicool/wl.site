@@ -1,8 +1,8 @@
 <template>
-    <div class="preset-exercise-set">
+    <div class="preset-exercise">
         <div class="name">{{exerciseName}}</div>
         <div class="sets">
-            <SetIndicator v-for="set in exerciseSets" :key="set.id" :weight="set.weight" :reps="set.reps" :time="set.time"/>
+            <SetIndicator v-for="set in exerciseSets" :key="set.id" :weight-guide="set.weightGuide" :reps="set.reps" :time="set.time"/>
         </div>
     </div>
 </template>
@@ -28,7 +28,7 @@ export default class Exercise extends Vue {
 </script>
 
 <style lang="scss">
-.preset-exercise-set {
+.preset-exercise {
     width: 100%;
     display: flex;
     justify-content: space-between;

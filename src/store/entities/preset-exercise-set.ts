@@ -1,4 +1,5 @@
 import {IExercise} from './exercise';
+import {EWeightGuide} from './types/weight-guide';
 
 export interface IPresetExerciseSet {
 	id: string;
@@ -7,6 +8,6 @@ export interface IPresetExerciseSet {
 	exerciseId: string;
 	exercise?: IExercise;
 	reps: number;
-	weight: number;
+	weightGuide: EWeightGuide;
 	time: number;
 }

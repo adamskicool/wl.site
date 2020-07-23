@@ -1,7 +1,7 @@
 <template>
     <div v-if="type === 'reps'" class="reps-indicator">
         <div class="reps">{{reps}}</div>
-        <div class="weight">{{weight}}</div>
+        <div class="weight-guide">{{weightGuideSymbol}}</div>
     </div>
     <div v-else class="time-indicator">
         <div class="time">{{time}}</div>
@@ -11,13 +11,27 @@
 <script lang="ts">
 import { Component, Vue, Prop } from "vue-property-decorator";
 import { IPresetExerciseSet } from '../../store/entities/preset-exercise-set';
+import { EWeightGuide } from '@/store/entities/types/weight-guide';
 
 @Component
 export default class SetIndicator extends Vue {
   @Prop({ default: 0 }) reps!: number;
-  @Prop({ default: 0 }) weight!: number;
+  @Prop({ default: 0 }) weightGuide!: EWeightGuide;
   @Prop({ default: 0 }) time!: number;
   @Prop({ default: 'reps' }) type?: string;
+
+  EWeightGuide = EWeightGuide;
+
+  get weightGuideSymbol(): string {
+      switch(this.weightGuide) {
+          case EWeightGuide.Start:
+              return 'B';
+          case EWeightGuide.Increase:
+              return '+';
+          default:
+              return '-';
+      }
+  }
 }
 </script>
 
@@ -31,7 +45,7 @@ export default class SetIndicator extends Vue {
     grid-template-rows: 1rem 1rem;
     margin-left: $spacing-small;
 
-    .reps, .weight {
+    .reps, .weight-guide {
         display: flex;
         height: 100%;
         width: 100%;
@@ -47,7 +61,7 @@ export default class SetIndicator extends Vue {
         overflow: hidden;
     }
 
-    .weight {
+    .weight-guide {
         grid-area: 'b';
         background-color: $red;
         border-radius: 0px 0px 4px 4px;

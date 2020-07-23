@@ -62,23 +62,23 @@ export default class WorkoutPreset extends Vue {
 
 <style lang="scss">
 .workout-preset {
-  width: 20rem;
-  height: auto;
-  margin: $spacing-medium;
-  .content {
-      height: 7rem;
-      overflow-y: scroll;
-      .overview {
-        .header {
-            padding: 0;
-            margin-bottom: $spacing-small;
+    width: 20rem;
+    height: auto;
+    margin: $spacing-medium;
+    .content {
+        height: 7rem;
+        overflow-y: scroll;
+        .overview {
+            .header {
+                padding: 0;
+                margin-bottom: $spacing-small;
+            }
         }
-    }
         .exercises {
             .exercise {
                 margin-top: $spacing-small;
             }
         }
-  }
+    }
 }
 </style>

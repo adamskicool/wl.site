@@ -6,7 +6,11 @@ export const topBarOptions: IRouterNav[] = [
 		path: '/app/home',
 	},
 	{
-		name: 'new-workout',
-		path: '/app/new_workout',
+		name: 'train',
+		path: '/app/workout_selector',
+	},
+	{
+		name: 'create-workout',
+		path: '/app/create_workout',
 	},
 ];

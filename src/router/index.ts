@@ -26,9 +26,11 @@ const routes = [
 				component: () => import('../view-application/view-home/HomeView.vue'),
 			},
 			{
-				path: 'new_workout',
+				path: 'workout_selector',
 				component: () =>
-					import('../view-application/view-new-workout/NewWorkoutView.vue'),
+					import(
+						'../view-application/view-workout-selector/WorkoutSelectorView.vue'
+					),
 			},
 		],
 	},

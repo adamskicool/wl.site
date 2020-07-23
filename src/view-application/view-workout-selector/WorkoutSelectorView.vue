@@ -19,7 +19,7 @@ import {IWorkoutPreset} from '@/store/entities/workout-preset';
         WorkoutPreset
     }
 })
-export default class NewWorkoutView extends Vue {
+export default class WorkoutSelectorView extends Vue {
     @Getter("workoutPresets", { namespace: libraryNamespace }) workoutPresets!: IWorkoutPreset[];
 }
 </script>
