@@ -8,8 +8,8 @@
             <div v-if="showOverview" class="overview">
                 <div class="description">{{description}}</div>
             </div>
-            <div v-else>
-                <ExerciseSet v-for="set in exerciseSets" :key="set.id" :exercise-set="set"/>
+            <div v-else class="exercises">
+                <Exercise class="exercise" v-for="groupedSet in groupedExerciseSets" :key="groupedSet.exerciseNumber" :exercise-sets="groupedSet.presetExerciseSets"/>
             </div>
         </md-card-content>
         <md-card-actions>
@@ -22,11 +22,13 @@
 import { Component, Vue, Prop } from "vue-property-decorator";
 import Button from "@/components/core/Button.vue";
 import { IPresetExerciseSet } from '../../store/entities/preset-exercise-set';
-import ExerciseSet from '@/components/workout-preset/ExerciseSet.vue';
+import Exercise from '@/components/workout-preset/Exercise.vue';
+import {groupExerciseSets} from '@/components/workout-preset/helper';
+
 @Component({
     components: {
         Button,
-        ExerciseSet
+        Exercise
     }
 })
 export default class WorkoutPreset extends Vue {
@@ -46,6 +48,10 @@ export default class WorkoutPreset extends Vue {
 
   get buttonLabel(): string {
       return this.showOverview ? 'View sets' : 'Back';
+  }
+
+  get groupedExerciseSets(): any {
+      return groupExerciseSets(this.exerciseSets ? this.exerciseSets : [])
   }
 
   handleClick() {
@@ -68,6 +74,11 @@ export default class WorkoutPreset extends Vue {
             margin-bottom: $spacing-small;
         }
     }
+        .exercises {
+            .exercise {
+                margin-top: $spacing-small;
+            }
+        }
   }
 }
 </style>

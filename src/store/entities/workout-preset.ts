@@ -1,4 +1,4 @@
-import {IPresetExerciseSe} frtom './preset-exercise-set';
+import {IPresetExerciseSet} from './preset-exercise-set';
 
 export interface IWorkoutPreset {
 	id: string;
