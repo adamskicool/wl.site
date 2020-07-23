@@ -12,7 +12,7 @@ import { Component, Vue, Prop } from "vue-property-decorator";
 import { State, Action, Getter } from "vuex-class";
 import { namespace as libraryNamespace } from "@/store/modules/library/library.store";
 import WorkoutPreset from "@/components/workout-preset/WorkoutPreset.vue";
-import {IWorkoutPresetDTO} from '@/store/entities/dto/workout-preset-dto';
+import {IWorkoutPreset} from '@/store/entities/workout-preset';
 
 @Component({
     components: {
@@ -20,7 +20,7 @@ import {IWorkoutPresetDTO} from '@/store/entities/dto/workout-preset-dto';
     }
 })
 export default class NewWorkoutView extends Vue {
-    @State("workoutPresets", { namespace: libraryNamespace }) workoutPresets!: IWorkoutPresetDTO[];
+    @Getter("workoutPresets", { namespace: libraryNamespace }) workoutPresets!: IWorkoutPreset[];
 }
 </script>
 

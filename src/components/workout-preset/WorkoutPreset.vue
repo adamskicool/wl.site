@@ -21,7 +21,7 @@
 <script lang="ts">
 import { Component, Vue, Prop } from "vue-property-decorator";
 import Button from "@/components/core/Button.vue";
-import { PresetExerciseSet } from '../../store/entities/preset-exercise-set';
+import { IPresetExerciseSet } from '../../store/entities/preset-exercise-set';
 import ExerciseSet from '@/components/workout-preset/ExerciseSet.vue';
 @Component({
     components: {
@@ -33,7 +33,7 @@ export default class WorkoutPreset extends Vue {
   @Prop({ default: "" }) name!: string;
   @Prop({ default: ""}) description?: string;
   @Prop({ default: ""}) muscleAreas?: string[];
-  @Prop({ default: () => [] }) exerciseSets?: PresetExerciseSet[];
+  @Prop({ default: () => [] }) exerciseSets?: IPresetExerciseSet[];
 
   showOverview: boolean = true;
 

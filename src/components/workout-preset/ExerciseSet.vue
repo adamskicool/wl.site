@@ -6,11 +6,11 @@
 
 <script lang="ts">
 import { Component, Vue, Prop } from "vue-property-decorator";
-import { PresetExerciseSet } from '../../store/entities/preset-exercise-set';
+import { IPresetExerciseSet } from '../../store/entities/preset-exercise-set';
 
 @Component
 export default class ExerciseSet extends Vue {
-  @Prop({ default: {} }) exerciseSet?: PresetExerciseSet;
+  @Prop({ default: {} }) exerciseSet?: IPresetExerciseSet;
 
 }
 </script>

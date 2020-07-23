@@ -9,7 +9,7 @@
 
 <script lang="ts">
 import {
-  actionLoadWorkoutPresets,
+  actionLoadLibrary,
 } from "@/store/modules/library/library.actions";
 import { namespace as libraryNamespace } from "@/store/modules/library/library.store";
 
@@ -23,13 +23,13 @@ import TopBar from "@/components/topbar/TopBar.vue";
   }
 })
 export default class HomeView extends Vue {
-    @Action(actionLoadWorkoutPresets, {
+    @Action(actionLoadLibrary, {
     namespace: libraryNamespace
   })
-  actionLoadWorkoutPresets: any;
+  actionLoadLibrary: any;
 
   async created() {
-      this.actionLoadWorkoutPresets();
+      this.actionLoadLibrary();
   }
 }
 </script>
