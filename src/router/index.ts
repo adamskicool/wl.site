@@ -32,6 +32,13 @@ const routes = [
 						'../view-application/view-workout-selector/WorkoutSelectorView.vue'
 					),
 			},
+			{
+				path: 'workout_creator',
+				component: () =>
+					import(
+						'../view-application/view-workout-creator/WorkoutCreatorView.vue'
+					),
+			},
 		],
 	},
 ];

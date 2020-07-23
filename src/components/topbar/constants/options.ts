@@ -11,6 +11,6 @@ export const topBarOptions: IRouterNav[] = [
 	},
 	{
 		name: 'create-workout',
-		path: '/app/create_workout',
+		path: '/app/workout_creator',
 	},
 ];

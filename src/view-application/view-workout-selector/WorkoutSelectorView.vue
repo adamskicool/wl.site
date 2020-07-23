@@ -1,5 +1,5 @@
 <template>
-  <div class="new-workout-view">
+  <div class="workout-selector-view">
     <transition-group class="presets" name="move">
         <!-- TODO: Swapp out muscle areas for calculated propery from BE... -->
         <WorkoutPreset v-for="preset in workoutPresets" v-bind:key="preset.id" :name="preset.name" :description="preset.description" :muscle-areas="['bicep', 'tricep', 'pectoral major']" :exercise-sets="preset.presetExerciseSets"/>
