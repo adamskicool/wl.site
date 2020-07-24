@@ -4,6 +4,7 @@
       v-for="option in topBarOptions"
       :key="option.name"
       :label="option.name"
+      @click="handleClick(option)"
     />
   </div>
 </template>
@@ -13,6 +14,7 @@ import { State, Action, Getter } from "vuex-class";
 import { Component, Vue, Prop } from "vue-property-decorator";
 import { topBarOptions } from "@/components/topbar/constants/options";
 import Button from "@/components/core/Button.vue";
+import { IRouterNav } from '../../types/interfaces/router-nav';
 
 @Component({
   components: {
@@ -21,6 +23,10 @@ import Button from "@/components/core/Button.vue";
 })
 export default class TopBar extends Vue {
   topBarOptions = topBarOptions;
+
+  handleClick(option: IRouterNav) {
+      this.$router.push(option.path);
+  }
 }
 </script>
 
@@ -28,6 +34,6 @@ export default class TopBar extends Vue {
 .topbar {
   display: flex;
   width: 100%;
-  height: 3rem;
+  height: $top-bar-height;
 }
 </style>
